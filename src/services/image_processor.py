@@ -10,10 +10,7 @@ from google.oauth2 import service_account
 def get_gcs_client():
     if not settings.GCS_BUCKET_NAME:
         raise ValueError("GCS_BUCKET_NAME is not set")
-    if settings.GOOGLE_APPLICATION_CREDENTIALS_JSON:
-        credentials_dict = json.loads(settings.GOOGLE_APPLICATION_CREDENTIALS_JSON)
-        credentials = service_account.Credentials.from_service_account_info(credentials_dict)
-        return storage.Client(credentials=credentials, project=credentials.project_id)
+    # If GOOGLE_APPLICATION_CREDENTIALS is set in env, google.cloud.storage uses it automatically
     return storage.Client()
 
 def upload_to_gcs(local_path: str, destination_blob_name: str) -> str:

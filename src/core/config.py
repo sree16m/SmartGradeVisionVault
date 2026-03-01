@@ -9,8 +9,7 @@ class Settings(BaseSettings):
     # Cloud Storage Settings
     USE_CLOUD_STORAGE: bool = os.getenv("USE_CLOUD_STORAGE", "False").lower() == "true"
     GCS_BUCKET_NAME: str = os.getenv("GCS_BUCKET_NAME", "")
-    GOOGLE_APPLICATION_CREDENTIALS_JSON: str = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON", "")
-    
+    GOOGLE_APPLICATION_CREDENTIALS: str = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
     
     class Config:
         env_file = ".env"
